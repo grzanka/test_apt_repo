@@ -95,12 +95,13 @@ jobs:
           gpg --batch --passphrase '' --quick-gen-key "Name_test (Testing) <email_test@xxx.com>" ed25519 cert 1y
           echo "getting id"
           fpr=$(gpg --list-options show-only-fpr-mbox --list-secret-keys | sed -r -n '$!d;s@^([^[:space:]]+).*@\1@g;p')
-          touch public_key.txt
-          echo $fpr >> public_key.txt
+          touch public_key_id.txt
+          echo $fpr >> public_key_id.txt
           echo "adding"
           gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr ed25519 sign 1y
           gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr ed25519 auth 1y
           gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr cv25519 encrypt 1y
+          gpg export --armor > public.gpg
 
       - name: Inspect and run aptly
         run: |
@@ -111,7 +112,8 @@ jobs:
           ./aptly_1.4.0_linux_amd64/aptly publish repo -batch main
           ls -alh ~/.aptly/public      
           mv ~/.aptly/public .
-          mv public_key.txt public/
+          mv public_key_id.txt public/
+          mv public.gpg public/
 
       - name: Archive repo as artifact
         uses: actions/upload-artifact@v2
