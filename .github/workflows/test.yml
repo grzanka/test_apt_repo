@@ -107,12 +107,14 @@ jobs:
           tar -zxf aptly_1.4.0_linux_amd64.tar.gz
           ./aptly_1.4.0_linux_amd64/aptly repo create -distribution="stable" -component="main" main
           ./aptly_1.4.0_linux_amd64/aptly repo add main pymchelper.deb
-          ./aptly_1.4.0_linux_amd64/aptly publish repo main
-          ls -alh ~/.aptly/public
+          ./aptly_1.4.0_linux_amd64/aptly publish repo -batch main
+          ls -alh ~/.aptly/public          
+          mv ~/.aptly/public .
+
 
       - name: Push to Github Pages 1
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          directory: /home/runner/.aptly/public
+          directory: public
