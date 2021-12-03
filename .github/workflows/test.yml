@@ -131,7 +131,11 @@ jobs:
       - name: Inspect artifacts
         run: |
           ls -alh .
-  
+
+      - name: Inspect artifacts
+        run: |
+          ls -alh public/
+
       - name: Push to Github Pages 1
         uses: ad-m/github-push-action@v0.6.0
         with:
