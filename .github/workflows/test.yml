@@ -111,7 +111,26 @@ jobs:
           ls -alh ~/.aptly/public          
           mv ~/.aptly/public .
 
+      - name: Archive repo as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: repo
+          path: 'public'
 
+  repo_upload:
+      runs-on: ubuntu-latest
+      needs: [repo_prepare]
+      steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: repo
+  
+      - name: Inspect artifacts
+        run: |
+          ls -alh .
+  
       - name: Push to Github Pages 1
         uses: ad-m/github-push-action@v0.6.0
         with:
