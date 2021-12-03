@@ -2,13 +2,12 @@ Package: pymchelper
 Maintainer: Leszek Grzanka
 Architecture: amd64
 Version: 0.1.0
-Provides: pld2sobp
 Depends: libc6 (>= 2.12)
 Filename: pool/main/p/pymchelper/pymchelper.deb
-Size: 11996676
-MD5sum: 16dc6c09f4b63a663472a7e6f9f6a11f
-SHA1: 8a3527a4a1c0caec38ba0af0a36416a7d8c02e55
-SHA256: 604cb88ab4507c76cce9e7974aa6779f58055682ac9d5f0b8d7b259832c5f60c
-SHA512: 2611d363deb17022d4072a87e027674034c9854f9f3051f8e4cff9e5f0d857be233218e6dc04c6fb4627ec4d7224f1e32cce966ed8a766504248954d33a61025
+Size: 94193244
+MD5sum: cec77ca8457d90e8e950eb87de62dba1
+SHA1: 0eab58a3f82d2d42d34e170f930d199c16087972
+SHA256: 3d13b4ed16703783e4e91ca10e29a859642d7b4b0d8dfff98b630b20a3007491
+SHA512: 63f08cbb5bd99aefe1c5d059174d931291f0ca6dddb0586d587370ead6bbb4b01f9495273bf1a1cbe52d72d2e6661815fa92fc38ee0f4e0d55d26a422862a2d5
 Description: An example package
 
