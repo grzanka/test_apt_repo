@@ -30,7 +30,7 @@ jobs:
     needs: [build_deb]
     strategy:
       matrix:
-        docker-tag: ['debian:7', 'debian:8', 'debian:9', 'debian:10', 'debian:11']
+        docker-tag: ['debian:7', 'debian:8', 'debian:9', 'debian:10', 'debian:11', 'ubuntu:14.04']
     steps:
       - uses: actions/download-artifact@v2
         with:
@@ -44,4 +44,4 @@ jobs:
 
       - name: Test installation
         run: |
-          docker run -v `pwd`:/pkg ${{ matrix.python-version }} /bin/sh -c "ldd --version; dpkg -i /pkg/pymchelper.deb; pld2sobp --version"
+          docker run -v `pwd`:/pkg ${{ matrix.docker-tag }} /bin/sh -c "ldd --version; dpkg -i /pkg/pymchelper.deb; pld2sobp --version"
