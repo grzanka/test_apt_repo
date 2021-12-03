@@ -114,7 +114,6 @@ jobs:
           mv ~/.aptly/public .
           mv public_key_id.txt public/
           mv public.gpg public/
-          mv datamedsci.list public/
 
       - name: Archive repo as artifact
         uses: actions/upload-artifact@v2
@@ -135,6 +134,7 @@ jobs:
 
       - name: Tuning
         run: |
+          mv datamedsci.list public/
           touch public/.nojekyll
 
       - name: Deploy to GitHub Pages
