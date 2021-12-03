@@ -128,14 +128,6 @@ jobs:
           name: repo
           path: public
   
-      - name: Inspect artifacts
-        run: |
-          ls -alh .
-
-      - name: Inspect artifacts 2
-        run: |
-          ls -alh public/
-
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
