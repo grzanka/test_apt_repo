@@ -10,10 +10,13 @@ chmod +x convertmc
 chmod +x runmc
 chmod +x mcscripter
 mkdir --parents debpkg/usr/bin
-mv pld2sobp debpkg/usr/bin
-mv convertmc debpkg/usr/bin
+
+# we need smaller size, Github Pages has limit 100 MB
+
+#mv pld2sobp debpkg/usr/bin
+#mv convertmc debpkg/usr/bin
 mv runmc debpkg/usr/bin
-mv mcscripter debpkg/usr/bin
+#mv mcscripter debpkg/usr/bin
 
 # for debian <= 7 no compression and old format
 dpkg-deb --root-owner-group -Znone --deb-format=0.939000 --build debpkg pymchelper_old.deb
