@@ -78,10 +78,15 @@ jobs:
           name: deb
           path: ./
 
+      # see https://stackoverflow.com/questions/51504367/gpg-agent-forwarding-inappropriate-ioctl-for-device
       - name: Generate dummy GPG key
         run: |
-          GPG_TTY=$(tty) gpg --batch --quick-gen-key "Name_test (Testing) <email_test@xxx.com>" ed25519 cert 1y
-          GPG_TTY=$(tty) gpg --batch --passphrase '' --quick-gen-key "Name_test (Testing) <email_test@xxx.com>" ed25519 cert 1y
+          echo "use-agent" >> ~/.gnupg/gpg.conf
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          echo RELOADAGENT | gpg-connect-agent
+          gpg --batch --quick-gen-key "Name_test (Testing) <email_test@xxx.com>" ed25519 cert 1y
+          gpg --batch --passphrase '' --quick-gen-key "Name_test (Testing) <email_test@xxx.com>" ed25519 cert 1y
           fpr=$(gpg --list-options show-only-fpr-mbox --list-secret-keys | sed -r -n '$!d;s@^([^[:space:]]+).*@\1@g;p')
           echo $fpr
           gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr ed25519 sign 1y
