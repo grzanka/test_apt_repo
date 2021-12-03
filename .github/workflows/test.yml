@@ -31,6 +31,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: deb
+          path: ./
 
       - name: Inspect artifacts
         run: |
@@ -39,4 +40,5 @@ jobs:
 
       - name: Test installation
         run: |
+          docker run -it -v `pwd`:/pkg debian:6 /bin/sh -c "ldd --version"
           docker run -it -v `pwd`:/pkg debian:8 /bin/sh -c "ldd --version; dpkg -i /pkg/pymchelper.deb; pld2sobp --version"
