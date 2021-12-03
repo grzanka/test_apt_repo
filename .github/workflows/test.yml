@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  build_and_test:
+  build_deb:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,3 +18,25 @@ jobs:
           ls -alh .
           ./generate_deb.sh
           ls -alh
+
+      - name: Archive debian package as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: deb
+          path: pymchelper.deb
+
+  test_deb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: deb
+
+      - name: Inspect artifacts
+        run: |
+          ls -alh .
+          dpkg-deb --contents pymchelper.deb
+
+      - name: Test installation
+        run: |
+          docker run -it -v `pwd`:/pkg debian:8 /bin/sh -c "ldd --version; dpkg -i /pkg/pymchelper.deb; pld2sobp --version"
