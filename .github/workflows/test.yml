@@ -81,8 +81,12 @@ jobs:
       # see https://stackoverflow.com/questions/51504367/gpg-agent-forwarding-inappropriate-ioctl-for-device
       - name: Generate dummy GPG key
         run: |
+          mkdir -p ~/.gnupg
+          chmod 700 ~/.gnupg
+          touch ~/.gnupg/gpg.conf
           echo "use-agent" >> ~/.gnupg/gpg.conf
           echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          touch ~/.gnupg/gpg-agent.conf
           echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
           echo RELOADAGENT | gpg-connect-agent
           gpg --batch --quick-gen-key "Name_test (Testing) <email_test@xxx.com>" ed25519 cert 1y
