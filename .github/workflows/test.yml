@@ -72,13 +72,18 @@ jobs:
       runs-on: ubuntu-latest
       needs: [test_deb, test_old_deb]
       steps:
-      - name: Inspect deps
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: deb
+          path: ./
+
+      - name: Inspect and run aptly
         run: |
           wget --quiet https://github.com/aptly-dev/aptly/releases/download/v1.4.0/aptly_1.4.0_linux_amd64.tar.gz
           tar -zxf aptly_1.4.0_linux_amd64.tar.gz
-          cd aptly_1.4.0_linux_amd64
-          ./aptly repo create -distribution="stable" -component="main" main
-          ./aptly repo add main ../pymchelper.deb
-          ./aptly publish repo main
+          ./aptly_1.4.0_linux_amd64/aptly repo create -distribution="stable" -component="main" main
+          ./aptly_1.4.0_linux_amd64/aptly repo add main ../pymchelper.deb
+          ./aptly_1.4.0_linux_amd64/aptly publish repo main
           ls -alh ~/.aptly/public
 
