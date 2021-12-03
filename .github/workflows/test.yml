@@ -95,7 +95,8 @@ jobs:
           gpg --batch --passphrase '' --quick-gen-key "Name_test (Testing) <email_test@xxx.com>" ed25519 cert 1y
           echo "getting id"
           fpr=$(gpg --list-options show-only-fpr-mbox --list-secret-keys | sed -r -n '$!d;s@^([^[:space:]]+).*@\1@g;p')
-          echo $fpr
+          touch public_key.txt
+          echo $fpr >> public_key.txt
           echo "adding"
           gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr ed25519 sign 1y
           gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr ed25519 auth 1y
@@ -108,8 +109,9 @@ jobs:
           ./aptly_1.4.0_linux_amd64/aptly repo create -distribution="stable" -component="main" main
           ./aptly_1.4.0_linux_amd64/aptly repo add main pymchelper.deb
           ./aptly_1.4.0_linux_amd64/aptly publish repo -batch main
-          ls -alh ~/.aptly/public          
+          ls -alh ~/.aptly/public      
           mv ~/.aptly/public .
+          mv public_key.txt public/
 
       - name: Archive repo as artifact
         uses: actions/upload-artifact@v2
@@ -127,7 +129,11 @@ jobs:
         with:
           name: repo
           path: public
-  
+
+      - name: Tuning
+        run: |
+          touch public/.nojekyll
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
