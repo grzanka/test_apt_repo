@@ -3,5 +3,4 @@ Version: 0.1.0
 Architecture: amd64
 Maintainer: Leszek Grzanka
 Depends: libc6 (>= 2.12)
-Provides: pld2sobp
 Description: An example package
