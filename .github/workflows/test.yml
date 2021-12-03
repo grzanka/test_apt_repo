@@ -101,7 +101,7 @@ jobs:
           gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr ed25519 sign 1y
           gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr ed25519 auth 1y
           gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr cv25519 encrypt 1y
-          gpg export --armor > public.gpg
+          gpg export --help
 
       - name: Inspect and run aptly
         run: |
