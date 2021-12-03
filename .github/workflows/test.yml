@@ -83,7 +83,7 @@ jobs:
           wget --quiet https://github.com/aptly-dev/aptly/releases/download/v1.4.0/aptly_1.4.0_linux_amd64.tar.gz
           tar -zxf aptly_1.4.0_linux_amd64.tar.gz
           ./aptly_1.4.0_linux_amd64/aptly repo create -distribution="stable" -component="main" main
-          ./aptly_1.4.0_linux_amd64/aptly repo add main ../pymchelper.deb
+          ./aptly_1.4.0_linux_amd64/aptly repo add main pymchelper.deb
           ./aptly_1.4.0_linux_amd64/aptly publish repo main
           ls -alh ~/.aptly/public
 
