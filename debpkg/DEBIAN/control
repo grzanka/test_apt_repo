@@ -1,0 +1,6 @@
+Package: pymchelper
+Version: 0.1.0
+Architecture: amd64
+Maintainer: Leszek Grzanka
+Depends: glibc
+Description: An example package
