@@ -132,7 +132,7 @@ jobs:
         run: |
           ls -alh .
 
-      - name: Inspect artifacts
+      - name: Inspect artifacts 2
         run: |
           ls -alh public/
 
