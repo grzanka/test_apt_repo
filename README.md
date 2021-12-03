@@ -2,6 +2,16 @@
 
 Test apt repo
 
+```
+docker run -it debian:stable /bin/bash
+```
+
+then:
+
+```
+apt update && apt install -y sudo wget gpg
+```
+
 Download the key:
 
 ```
@@ -18,12 +28,11 @@ Install the package:
 
 ```
 apt update
-apt install pymchelper
-
+apt install -y pymchelper
 ```
 
 Test it:
 
 ```
-pld2sobp --version
+runmc --version
 ```
