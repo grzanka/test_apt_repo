@@ -110,3 +110,9 @@ jobs:
           ./aptly_1.4.0_linux_amd64/aptly publish repo main
           ls -alh ~/.aptly/public
 
+      - name: Push to Github Pages
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          directory: ~/.aptly/public
