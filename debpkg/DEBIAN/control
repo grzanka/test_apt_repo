@@ -1,6 +1,6 @@
 Package: pymchelper
-Version: 0.1.0
+Version: 1.10.7
 Architecture: amd64
 Maintainer: Leszek Grzanka
 Depends: libc6 (>= 2.12)
-Description: An example package
+Description: pymchelper
