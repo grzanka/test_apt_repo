@@ -5,10 +5,10 @@ Version: 1.10.7
 Depends: libc6 (>= 2.12)
 Filename: pool/main/p/pymchelper-convertmc/pymchelper-convertmc.deb
 Size: 724
-MD5sum: 9823df0c8f27385534da1a026abde096
-SHA1: d0b7f4438afc30f72d8c8337164c9d08abef8aa7
-SHA256: bce426e514891ee14cf08be261d652128be0d794f8c603d40765bffedbb06379
-SHA512: a15efbb1c225fe26a18baaa3a10fd6a1403295d3ba713a39605bd6dad5a5bd750dca85b0b8de48c8569f81efde5ff7d556280f3717e9e008d6b05186d5acde62
+MD5sum: 0df5de60b2ee640b9fca7261ee924257
+SHA1: 96cde3eb57b1e95038605981411cd2d1a61aeef9
+SHA256: 8276dcc2779d633fe251615aefd46e2c09a09d2feec3db602ee7419eb30a44bd
+SHA512: 10ff78c4c8c314013a039554ccd62f56b63376c0948f04eb30b4a249bb1a92f9e900261b8f8c8e7b768425fc8c9df299625dda1abc73dbbd30c4f9692f695faa
 Description: pymchelper convertmc
 
 Package: pymchelper-runmc
@@ -17,10 +17,10 @@ Architecture: amd64
 Version: 1.10.7
 Depends: libc6 (>= 2.12)
 Filename: pool/main/p/pymchelper-runmc/pymchelper-runmc.deb
-Size: 720
-MD5sum: e8ea5416ed1569e2fc58d338da149e2e
-SHA1: 87c129cdf2c6beda7358e8106ce9cd022a4ffa6d
-SHA256: 67aedf3ee898dad960dcde13a6db6228e94090e286bb0ab58b71cbf101460d2c
-SHA512: a78524b3fcfbec9cf44b5a5af18956f568225aa94597d9cc4fbf3b4a0eb59b8090b406e5b8b988d9c5c5421e0dda163d45bea30a1eb616fb3aef84f315add28c
+Size: 716
+MD5sum: 15b6f34f7949b1f60ad2112a5b7efcfe
+SHA1: 6fe3cc19eaa0f201281835d4599d54ffa57fcda2
+SHA256: 77b9c3d09157bef538f91ff8397b265c3d37ae7d88ac6cbeb54465732e846d05
+SHA512: be060024d3dac1612db620ddb549f5a945979fe678989c52dad03cb83399383cfcda7a249ada16d7984e52c953667c22852add8edaf2862ae98929c01a8a7faa
 Description: pymchelper runmc
 
