@@ -30,7 +30,7 @@ done
 
 # adjust version, use version of latest script from the loop above
 sed -i "s/Version\:.*/Version\: ${VERSION}/g" pymchelper/DEBIAN/control
-sed -i "s/\(=dummy\)/\(=${VERSION}\)/g" pymchelper/DEBIAN/control
+sed -i "s/=dummy/=${VERSION}/g" pymchelper/DEBIAN/control
 
 # for debian <= 7 no compression and old format, exit in case of failure
 dpkg-deb --root-owner-group -Znone --deb-format=0.939000 --build pymchelper pymchelper-old.deb || exit 1;
