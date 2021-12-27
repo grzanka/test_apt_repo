@@ -28,7 +28,8 @@ Install the package:
 
 ```
 apt update
-apt install -y pymchelper
+apt install -y pymchelper-convertmc
+apt install -y pymchelper-runmc
 ```
 
 Test it:

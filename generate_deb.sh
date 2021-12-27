@@ -23,3 +23,5 @@ do
     # for all versions use newest format of deb packages
     dpkg-deb --root-owner-group --build pymchelper-${SCRIPT} pymchelper-${SCRIPT}.deb
 done
+
+ls -alh *deb
