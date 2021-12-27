@@ -1,0 +1,6 @@
+Package: pymchelper
+Version: dummy
+Architecture: amd64
+Maintainer: Leszek Grzanka
+Depends: libc6 (>= 2.12), pymchelper-convertmc (=dummy), pymchelper-runmc (=dummy)
+Description: pymchelper

@@ -1,25 +1,40 @@
 #!/bin/bash
 
-rm --force pld2sobp
-wget --quiet https://github.com/DataMedSci/pymchelper/releases/download/v1.10.7/pld2sobp
-wget --quiet https://github.com/DataMedSci/pymchelper/releases/download/v1.10.7/convertmc
-wget --quiet https://github.com/DataMedSci/pymchelper/releases/download/v1.10.7/runmc
-wget --quiet https://github.com/DataMedSci/pymchelper/releases/download/v1.10.7/mcscripter
-chmod +x pld2sobp
-chmod +x convertmc
-chmod +x runmc
-chmod +x mcscripter
-mkdir --parents debpkg/usr/bin
+# Print commands and their arguments as they are executed
+set -x
+
+#SCRIPTS_NAMES = ('convertmc' 'runmc' 'pld2sobp' 'mcscripter')
+SCRIPTS_NAMES=('convertmc' 'runmc')
 
 # we need smaller size, Github Pages has limit 100 MB
+for SCRIPT in "${SCRIPTS_NAMES[@]}"
+do
+    BIN_DIR=pymchelper-${SCRIPT}/usr/bin
+    rm --recursive --force ${BIN_DIR}
+    mkdir --parents ${BIN_DIR}
 
-mv pld2sobp debpkg/usr/bin
-mv convertmc debpkg/usr/bin
-mv runmc debpkg/usr/bin
-mv mcscripter debpkg/usr/bin
+    # download latest release, exit in case of failure
+    wget --quiet https://github.com/DataMedSci/pymchelper/releases/latest/download/${SCRIPT} --output-document=${BIN_DIR}/${SCRIPT} || exit 1;
+    chmod +x ${BIN_DIR}/${SCRIPT}
 
-# for debian <= 7 no compression and old format
-dpkg-deb --root-owner-group -Znone --deb-format=0.939000 --build debpkg pymchelper_old.deb
+    VERSION=`${BIN_DIR}/${SCRIPT} --version`
+    # adjust version
+    sed -i "s/Version\:.*/Version\: ${VERSION}/g" pymchelper-${SCRIPT}/DEBIAN/control
 
-# for all versions use newest format of deb packages
-dpkg-deb --root-owner-group --build debpkg pymchelper.deb
+    # for debian <= 7 no compression and old format, exit in case of failure
+    dpkg-deb --root-owner-group -Znone --deb-format=0.939000 --build pymchelper-${SCRIPT} pymchelper-${SCRIPT}-old.deb || exit 1;
+
+    # for all versions use newest format of deb packages, exit in case of failure
+    dpkg-deb --root-owner-group --build pymchelper-${SCRIPT} pymchelper-${SCRIPT}.deb || exit 1;
+done
+
+# adjust version, use version of latest script from the loop above
+sed -i "s/Version\:.*/Version\: ${VERSION}/g" pymchelper/DEBIAN/control
+sed -i "s/=dummy/=${VERSION}/g" pymchelper/DEBIAN/control
+
+# for debian <= 7 no compression and old format, exit in case of failure
+dpkg-deb --root-owner-group -Znone --deb-format=0.939000 --build pymchelper pymchelper-old.deb || exit 1;
+# for all versions use newest format of deb packages, exit in case of failure
+dpkg-deb --root-owner-group --build pymchelper pymchelper.deb || exit 1;
+
+ls -alh *deb
