@@ -32,6 +32,13 @@ apt install -y pymchelper-convertmc
 apt install -y pymchelper-runmc
 ```
 
+or using metapackage:
+
+```
+apt update
+apt install -y pymchelper
+```
+
 Test it:
 
 ```

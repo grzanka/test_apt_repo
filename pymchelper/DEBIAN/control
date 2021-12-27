@@ -1,6 +1,8 @@
+Section: misc
+Priority: optional
 Package: pymchelper
 Version: 1.10.7
 Architecture: amd64
 Maintainer: Leszek Grzanka
-Depends: libc6 (>= 2.12)
+Depends: libc6 (>= 2.12), pymchelper-convertmc (==1.10.7), pymchelper-runmc (==1.10.7)
 Description: pymchelper

@@ -24,4 +24,9 @@ do
     dpkg-deb --root-owner-group --build pymchelper-${SCRIPT} pymchelper-${SCRIPT}.deb
 done
 
+# for debian <= 7 no compression and old format
+dpkg-deb --root-owner-group -Znone --deb-format=0.939000 --build pymchelper pymchelper-old.deb
+# for all versions use newest format of deb packages
+dpkg-deb --root-owner-group --build pymchelper pymchelper.deb
+
 ls -alh *deb
