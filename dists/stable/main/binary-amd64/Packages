@@ -1,13 +1,26 @@
-Package: pymchelper
+Package: pymchelper-convertmc
 Maintainer: Leszek Grzanka
 Architecture: amd64
-Version: 0.1.0
+Version: 1.10.7
 Depends: libc6 (>= 2.12)
-Filename: pool/main/p/pymchelper/pymchelper.deb
-Size: 94193620
-MD5sum: 7330543d55229659aa000693ac070058
-SHA1: bea196bb9f50f5a21aa5368e64eaaf3716e9f3ea
-SHA256: 9b0e97ec8986ee335e9f42dcc5b457d6f7f16a4579219d60c8cc82d52eeb611a
-SHA512: 59ee20085cbc441ae1e56fa1a6e81874b817a72a8b2ab945deb979595de4fcf29d2f2466bf48caaaff9642b1ac29d9e53aa627e20adfb8d210f20826a75bcd40
-Description: An example package
+Filename: pool/main/p/pymchelper-convertmc/pymchelper-convertmc.deb
+Size: 728
+MD5sum: e574886928d519dbb60f9c79c0df4335
+SHA1: c89e49042fabc4c7a89d2a522b99e5817bbceff7
+SHA256: 08e6cbacc5000d59cdfdae44a776e1c855db0834f5a2a8bd501924aa4ce511a6
+SHA512: c43384e787743f0bb62e81c83f3d5653154adc54a4c095fa70bc5d2af2cd54c0c69f5a84168ec39f0b633f57972d024aab5200b83dd78d0e30f92db75ceb182b
+Description: pymchelper convertmc
+
+Package: pymchelper-runmc
+Maintainer: Leszek Grzanka
+Architecture: amd64
+Version: 1.10.7
+Depends: libc6 (>= 2.12)
+Filename: pool/main/p/pymchelper-runmc/pymchelper-runmc.deb
+Size: 716
+MD5sum: 14202ceca6866c1e0463e70bf2bf5363
+SHA1: dde3b998b067e24937120d0df382ff4fce889fc6
+SHA256: de9d3d0f5b4f75e79f41f749e7b5fb5aeb4f7593384de9f76278e45c60529caa
+SHA512: 33a7989f158ab094d38cfce70e220bd48b1ca3ddd34c78b41e7787e0360bef2b22974dad56f89f3e838d5d069c1abe2b13cb96b82faeaadc5fd0f1fb326ed389
+Description: pymchelper runmc
 
