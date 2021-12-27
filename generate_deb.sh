@@ -3,8 +3,7 @@
 # Print commands and their arguments as they are executed
 set -x
 
-#SCRIPTS_NAMES = ('convertmc' 'runmc' 'pld2sobp' 'mcscripter')
-SCRIPTS_NAMES=('convertmc' 'runmc')
+SCRIPTS_NAMES = ('convertmc' 'runmc' 'pld2sobp' 'mcscripter')
 
 # we need smaller size, Github Pages has limit 100 MB
 for SCRIPT in "${SCRIPTS_NAMES[@]}"
@@ -22,7 +21,7 @@ do
     sed -i "s/Version\:.*/Version\: ${VERSION}/g" pymchelper-${SCRIPT}/DEBIAN/control
 
     # for debian <= 7 no compression and old format, exit in case of failure
-    dpkg-deb --root-owner-group -Znone --deb-format=0.939000 --build pymchelper-${SCRIPT} pymchelper-${SCRIPT}-old.deb || exit 1;
+    #dpkg-deb --root-owner-group -Znone --deb-format=0.939000 --build pymchelper-${SCRIPT} pymchelper-${SCRIPT}-old.deb || exit 1;
 
     # for all versions use newest format of deb packages, exit in case of failure
     dpkg-deb --root-owner-group --build pymchelper-${SCRIPT} pymchelper-${SCRIPT}.deb || exit 1;
@@ -33,7 +32,7 @@ sed -i "s/Version\:.*/Version\: ${VERSION}/g" pymchelper/DEBIAN/control
 sed -i "s/=dummy/=${VERSION}/g" pymchelper/DEBIAN/control
 
 # for debian <= 7 no compression and old format, exit in case of failure
-dpkg-deb --root-owner-group -Znone --deb-format=0.939000 --build pymchelper pymchelper-old.deb || exit 1;
+#dpkg-deb --root-owner-group -Znone --deb-format=0.939000 --build pymchelper pymchelper-old.deb || exit 1;
 # for all versions use newest format of deb packages, exit in case of failure
 dpkg-deb --root-owner-group --build pymchelper pymchelper.deb || exit 1;
 
