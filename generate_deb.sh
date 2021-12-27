@@ -3,7 +3,7 @@
 # Print commands and their arguments as they are executed
 set -x
 
-SCRIPTS_NAMES = ('convertmc' 'runmc' 'pld2sobp' 'mcscripter')
+SCRIPTS_NAMES=('convertmc' 'runmc' 'pld2sobp' 'mcscripter')
 
 # we need smaller size, Github Pages has limit 100 MB
 for SCRIPT in "${SCRIPTS_NAMES[@]}"
