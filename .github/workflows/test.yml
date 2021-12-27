@@ -14,7 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: |
+      - name: Generate debian packages
+        run: |
           ls -alh .
           ./generate_deb.sh
           ls -alh

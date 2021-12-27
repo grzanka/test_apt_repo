@@ -1,5 +1,5 @@
 Package: pymchelper-runmc
-Version: 1.10.7
+Version: dummy
 Architecture: amd64
 Maintainer: Leszek Grzanka
 Depends: libc6 (>= 2.12)
