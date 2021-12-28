@@ -80,19 +80,7 @@ jobs:
 
       - name: Get aptly tool, create reposity and add packages
         run: |
-          wget --quiet https://github.com/aptly-dev/aptly/releases/download/v1.4.0/aptly_1.4.0_linux_amd64.tar.gz
-          tar -zxf aptly_1.4.0_linux_amd64.tar.gz
-          ./aptly_1.4.0_linux_amd64/aptly repo create -distribution="stable" -component="main" main
-          ./aptly_1.4.0_linux_amd64/aptly repo add main pymchelper-convertmc.deb
-          ./aptly_1.4.0_linux_amd64/aptly repo add main pymchelper-runmc.deb
-          ./aptly_1.4.0_linux_amd64/aptly repo add main pymchelper-pld2sobp.deb
-          ./aptly_1.4.0_linux_amd64/aptly repo add main pymchelper-mcscripter.deb
-          ./aptly_1.4.0_linux_amd64/aptly repo add main pymchelper.deb
-          ./aptly_1.4.0_linux_amd64/aptly publish repo -batch main
-          ls -alh ~/.aptly/public      
-          mv ~/.aptly/public .
-          mv public_key_id.txt public/
-          mv public.gpg public/
+
 
       - name: Archive directory with repository as artifact
         uses: actions/upload-artifact@v2
