@@ -19,13 +19,13 @@ echo "Reloading GPG agent"
 echo RELOADAGENT | gpg-connect-agent
 
 echo "Generating GPG key"
-gpg --batch --passphrase '' --quick-gen-key "Name_test (Testing) <email_test@xxx.com>" ed25519 cert 1y
+gpg --batch --passphrase '' --quick-gen-key "Leszek Grzanka (Testing) <grzanka@agh.edu.pl>" ed25519 cert 1y
 
-echo "Extracting GPG key id"
+echo "Extracting GPG key fingerprint"
 # show-only-fpr-mbox : For each user-id which has a valid mail address print only the fingerprint followed by the mail address.
 fpr=$(gpg --list-options show-only-fpr-mbox --list-secret-keys | sed -r -n '$!d;s@^([^[:space:]]+).*@\1@g;p')
-touch public_key_id.txt
-echo $fpr >> public_key_id.txt
+touch key_fingerprint.txt
+echo $fpr >> key_fingerprint.txt
 
 echo "Adding key to GPG store"
 gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr ed25519 sign 1y
