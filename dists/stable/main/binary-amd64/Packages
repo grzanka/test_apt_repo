@@ -5,10 +5,10 @@ Version: 1.10.8
 Depends: libc6 (>= 2.12), pymchelper-convertmc (=1.10.8), pymchelper-runmc (=1.10.8), pymchelper-pld2sobp (=1.10.8), pymchelper-mcscripter (=1.10.8)
 Filename: pool/main/p/pymchelper/pymchelper.deb
 Size: 708
-MD5sum: 347dc3a61a1e980f0d95492f94a7deb2
-SHA1: 43d6fa734c3286fc8e415528369814ac8e326602
-SHA256: 79edfb1465e371f1bacf317da27e26a691b1c74b613ff7284c01f1a040e5fcc1
-SHA512: eb76c104a4234a4ba65e77f043811e83b9f6b26119acfe687f1689577f73c268704b8f06a4a3d2fb0f2596312edd993f86d1432cc7f37fa490dbcc35e5700805
+MD5sum: 6c430848ea1e7d735239ddcb8dc1b8f7
+SHA1: 9f21e4ee263b451b87b52c9a8f1edf4618d8460b
+SHA256: 78c449c4bc6f5579d5d5e744d3d0b4b3d1e338c6eb8f45ceca8be8cdda2085c3
+SHA512: b9851ef59596982ad1b9133db46f9c770d0ad1b12f95ded7a3141fde746e5bf660a010557c4efd65a34eab9ef70f16f3611d56dc6fa1108ae248315ec5f2295c
 Description: pymchelper
 
 Package: pymchelper-convertmc
@@ -17,11 +17,11 @@ Architecture: amd64
 Version: 1.10.8
 Depends: libc6 (>= 2.12)
 Filename: pool/main/p/pymchelper-convertmc/pymchelper-convertmc.deb
-Size: 41830380
-MD5sum: dfeef3661c0502c5398f7b931edf481d
-SHA1: ca092b9f0427256be3e551aab091db52048592c2
-SHA256: 7f72e82e7835da1af177b3bf26a7c598b7f4d6df5368838c5697f61622b50d24
-SHA512: b2d28d0e9bf25f72a5e755fc0a8a5dc799ba68b234858426beb8f293cb920dc560313d5f0850281da26a1ffdad321ea15ccdfbb0f26ba4d1b2cb93b0d5d682d5
+Size: 41830816
+MD5sum: acfe19705f0844f1a299aee3584cfaa0
+SHA1: f9ba79d25a7cefb7e71d9c8f371b19d624dc036c
+SHA256: b7a6b0b0bb444f72a567e5de1086b3858a05fdb3b7a314c05d593e9656f2f4ce
+SHA512: 6ab4d6a141d176bb5f38fc9ff720c1698b0f9abd3f00841a2b14618ea3abdd25070973bc72ff26b923c65d5f83e63234e91ec52b76e5e92f70e3ed1832773ed5
 Description: pymchelper convertmc
 
 Package: pymchelper-mcscripter
@@ -30,11 +30,11 @@ Architecture: amd64
 Version: 1.10.8
 Depends: libc6 (>= 2.12)
 Filename: pool/main/p/pymchelper-mcscripter/pymchelper-mcscripter.deb
-Size: 11997756
-MD5sum: 043c54b8a51d07dc929647c61f10ae92
-SHA1: cfb160553716bd70076974a6ba27dcc8b7b99b7b
-SHA256: 47d4510ff39263165e6e797cc0e2736b697fa63bab98fc330bd8fee6b614e340
-SHA512: 281ce8659040951c12ffbb7d8801131c6f5aab6f6b061b1f215d13738c0643f7374116aa02877997a719733f7e5b8411d79f5b07441df31159f473bce628dab6
+Size: 11997752
+MD5sum: 64c231604b32eb461b3e279ff87007eb
+SHA1: 0c3b654a3a774cd5e3ef3a1e7fc87799320a1719
+SHA256: 6163114ab55f436b500fa3cc59b23973c1e461f67b9aeb75ae09d44c4b09604f
+SHA512: de9f203370af4646b0d697b842e6bf369884591daddca687a26be1a8f4bbe2a5cb21d68c17a9376393e0967fbac0abe4892a9130de2bcfd1026899d3abd3c533
 Description: pymchelper mcscripter
 
 Package: pymchelper-pld2sobp
@@ -43,11 +43,11 @@ Architecture: amd64
 Version: 1.10.8
 Depends: libc6 (>= 2.12)
 Filename: pool/main/p/pymchelper-pld2sobp/pymchelper-pld2sobp.deb
-Size: 11993068
-MD5sum: 5ab5ac1b77cfe070fee49798b6c1d674
-SHA1: 2a0f3d2894498beec71d307ae84a7020c85bb352
-SHA256: 94249bd10e8aaa16731addbcf67550fb653d289b64d110b0a16e76f3d31bc5aa
-SHA512: c3b83fbb2db1fed21fbdca864983e7d1e5c09d72feb31c9b1f686d2d1475bba64e5d592e0582e0dd27d6d643d9ffba64cbf142635cba74a6bf1e26ed5a7aff50
+Size: 11993192
+MD5sum: dfa03f10dbcb279ee926e9216b5ef8c1
+SHA1: 7e5c7aec2a7182008d730708e22ad48c762d42b2
+SHA256: 3859aacf2393996881e48ca1903b123d786a13d9fb425e4946ae748a80748e7c
+SHA512: bfb22576f1ca1c5615a37a3f0ac7ee12e9dbf513a6964377fcc02886058049209a69d95a76c464bbcf8bddbcef92dca9dba10ee98166fec8aa4c92cc2cfaabe4
 Description: pymchelper pld2sobp
 
 Package: pymchelper-runmc
@@ -56,10 +56,10 @@ Architecture: amd64
 Version: 1.10.8
 Depends: libc6 (>= 2.12)
 Filename: pool/main/p/pymchelper-runmc/pymchelper-runmc.deb
-Size: 41836840
-MD5sum: 89fc9da279328480342b7862aa248802
-SHA1: 937690ed8e8660731d139fe709acd3baa0b6548b
-SHA256: 0b01bdd496c749563b8461ca6838d689a47b5815c567aba045b496e2305ce0fd
-SHA512: 3e252e8f260f3f0b023aaf8516939b401ccfdd82f8cbb5ee1880097f83e3d1e093f0ea029107f959f95806534ab8176a516a58fdc4642cfbd2abbde69fa56134
+Size: 41836696
+MD5sum: b5f274d304ebfa1899fca492701fd977
+SHA1: 7ee377c5734130ae8d6c618637efda47d2d08561
+SHA256: 7f79411516821253ab7709ca108b4e0478d1610cc935ef63855e141a802e8399
+SHA512: 0c60ec5effdd8c0c60e81929db7987f217874f793208b0c292bb75ea14f341be0d323d0fdc27706dc576c9847abb3b2ef020edf5cc646d792be77ef3d7819246
 Description: pymchelper runmc
 
