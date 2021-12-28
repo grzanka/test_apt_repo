@@ -22,27 +22,26 @@ jobs:
           name: deb
           path: '*.deb'
 
-  # test_deb:
-  #   runs-on: ubuntu-latest
-  #   needs: [build_deb]
-  #   strategy:
-  #     matrix:
-  #       docker-tag: ['debian:8', 'debian:9', 'debian:10', 'debian:11', 'debian:stable', 'ubuntu:14.04', 'ubuntu:16.04', 'ubuntu:18.04', 'ubuntu:20.04', 'ubuntu:21.04']
-  #   steps:
-  #     - uses: actions/download-artifact@v2
-  #       with:
-  #         name: deb
-  #         path: ./
+  test_deb:
+    runs-on: ubuntu-latest
+    needs: [build_deb]
+    strategy:
+      matrix:
+        docker-tag: ['debian:8', 'debian:9', 'debian:10', 'debian:11', 'debian:stable', 'ubuntu:14.04', 'ubuntu:16.04', 'ubuntu:18.04', 'ubuntu:20.04', 'ubuntu:21.04']
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: deb
+          path: ./
 
-  #     - name: Inspect artifacts
-  #       run: |
-  #         ls -alh .
-  #         dpkg-deb --contents pymchelper.deb
-  #         dpkg-deb --contents pymchelper_old.deb
+      - name: Inspect artifacts
+        run: |
+          ls -alh .
+          dpkg-deb --contents pymchelper.deb
 
-  #     - name: Test installation
-  #       run: |
-  #         docker run -v `pwd`:/pkg ${{ matrix.docker-tag }} /bin/sh -c "ldd --version; dpkg -i /pkg/pymchelper.deb; pld2sobp --version"
+      - name: Test installation
+        run: |
+          docker run -v `pwd`:/pkg ${{ matrix.docker-tag }} /bin/sh -c "ldd --version; dpkg --install /pkg/pymchelper-*.deb; pld2sobp --version"
 
   # test_old_deb:
   #   runs-on: ubuntu-latest
@@ -90,7 +89,7 @@ jobs:
 
   repo_upload:
       runs-on: ubuntu-latest
-      needs: [repo_prepare]
+      needs: [repo_prepare, test_deb]
       steps:
       - uses: actions/checkout@v2
 
