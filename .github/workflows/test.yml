@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-
 jobs:
   build_deb:
     runs-on: ubuntu-latest
@@ -14,13 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Generate debian packages
-        run: |
-          ls -alh .
-          ./generate_deb.sh
-          ls -alh
+      - name: Generate deb packages
+        run: ./generate_deb_packages.sh
 
-      - name: Archive debian package as artifacts
+      - name: Archive deb package as artifacts
         uses: actions/upload-artifact@v2
         with:
           name: deb
@@ -78,31 +74,9 @@ jobs:
         with:
           name: deb
           path: ./
-
-      # see https://stackoverflow.com/questions/51504367/gpg-agent-forwarding-inappropriate-ioctl-for-device
+    
       - name: Generate dummy GPG key
-        run: |
-          echo "configuring"
-          mkdir -p ~/.gnupg
-          chmod 700 ~/.gnupg
-          touch ~/.gnupg/gpg.conf
-          echo "use-agent" >> ~/.gnupg/gpg.conf
-          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
-          touch ~/.gnupg/gpg-agent.conf
-          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
-          echo "reloading"
-          echo RELOADAGENT | gpg-connect-agent
-          echo "quick gen"
-          gpg --batch --passphrase '' --quick-gen-key "Name_test (Testing) <email_test@xxx.com>" ed25519 cert 1y
-          echo "getting id"
-          fpr=$(gpg --list-options show-only-fpr-mbox --list-secret-keys | sed -r -n '$!d;s@^([^[:space:]]+).*@\1@g;p')
-          touch public_key_id.txt
-          echo $fpr >> public_key_id.txt
-          echo "adding"
-          gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr ed25519 sign 1y
-          gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr ed25519 auth 1y
-          gpg --batch --pinentry-mode=loopback --passphrase '' --quick-add-key $fpr cv25519 encrypt 1y
-          gpg --export --armor > public.gpg
+        run: ./generate_dummy_gpg_key.sh
 
       - name: Get aptly tool, create reposity and add packages
         run: |
