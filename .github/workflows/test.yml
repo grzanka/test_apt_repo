@@ -76,8 +76,23 @@ jobs:
           name: deb
           path: ./
     
-      - name: Generate dummy GPG key
-        run: ./generate_dummy_gpg_key.sh
+      # - name: Generate dummy GPG key
+      #   run: ./generate_dummy_gpg_key.sh
+
+      - name: Import GPG key from a secret variable
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}          
+      
+      - name: Print GPG user IDs and save files to be included in repository
+        run: |
+          echo "fingerprint: ${{ steps.import_gpg.outputs.fingerprint }}"
+          echo "keyid:       ${{ steps.import_gpg.outputs.keyid }}"
+          echo "name:        ${{ steps.import_gpg.outputs.name }}"
+          echo "email:       ${{ steps.import_gpg.outputs.email }}"
+          echo "${{ steps.import_gpg.outputs.fingerprint }}" > key_fingerprint.txt
+          gpg --export --armor --output public.gpg
 
       - name: Get aptly tool, create reposity and add packages
         run: ./add_packages_to_repo.sh

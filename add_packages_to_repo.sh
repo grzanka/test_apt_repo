@@ -15,5 +15,5 @@ ls -alh ~/.aptly/public
 
 mv ~/.aptly/public .
 
-mv public_key_id.txt public/
+mv key_fingerprint.txt public/
 mv public.gpg public/
