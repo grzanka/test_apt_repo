@@ -76,13 +76,16 @@ jobs:
           name: deb
           path: ./
     
-      - name: Import GPG key
+      # - name: Generate dummy GPG key
+      #   run: ./generate_dummy_gpg_key.sh
+
+      - name: Import GPG key from a secret variable
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v4
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}          
       
-      - name: GPG user IDs
+      - name: Print GPG user IDs and save files to be included in repository
         run: |
           echo "fingerprint: ${{ steps.import_gpg.outputs.fingerprint }}"
           echo "keyid:       ${{ steps.import_gpg.outputs.keyid }}"
