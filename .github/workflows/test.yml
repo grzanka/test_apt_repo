@@ -22,27 +22,27 @@ jobs:
           name: deb
           path: '*.deb'
 
-  # test_deb:
-  #   runs-on: ubuntu-latest
-  #   needs: [build_deb]
-  #   strategy:
-  #     matrix:
-  #       docker-tag: ['debian:8', 'debian:9', 'debian:10', 'debian:11', 'debian:stable', 'ubuntu:14.04', 'ubuntu:16.04', 'ubuntu:18.04', 'ubuntu:20.04', 'ubuntu:21.04']
-  #   steps:
-  #     - uses: actions/download-artifact@v2
-  #       with:
-  #         name: deb
-  #         path: ./
+  test_deb:
+    runs-on: ubuntu-latest
+    needs: [build_deb]
+    strategy:
+      matrix:
+        docker-tag: ['debian:8', 'debian:9', 'debian:10', 'debian:11', 'debian:stable', 'ubuntu:14.04', 'ubuntu:16.04', 'ubuntu:18.04', 'ubuntu:20.04', 'ubuntu:21.04']
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: deb
+          path: ./
 
-  #     - name: Inspect artifacts
-  #       run: |
-  #         dpkg-deb --contents pymchelper.deb
-  #         dpkg-deb --contents pymchelper-convertmc.deb
-  #         dpkg-deb --contents pymchelper-runmc.deb
+      - name: Inspect artifacts
+        run: |
+          dpkg-deb --contents pymchelper.deb
+          dpkg-deb --contents pymchelper-convertmc.deb
+          dpkg-deb --contents pymchelper-runmc.deb
 
-  #     - name: Test installation
-  #       run: |
-  #         docker run --volume `pwd`:/pkg ${{ matrix.docker-tag }} /bin/sh -c "ldd --version; dpkg --install /pkg/pymchelper-*.deb; convertmc --version; runmc --version"
+      - name: Test installation
+        run: |
+          docker run --volume `pwd`:/pkg ${{ matrix.docker-tag }} /bin/sh -c "ldd --version; dpkg --install /pkg/pymchelper-*.deb; convertmc --version; runmc --version"
 
   # test_old_deb:
   #   runs-on: ubuntu-latest
