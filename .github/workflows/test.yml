@@ -1,4 +1,4 @@
-name: Test
+name: Test of automatic file upload to a debian repo
 
 on:
   push:
