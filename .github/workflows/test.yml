@@ -36,12 +36,13 @@ jobs:
 
       - name: Inspect artifacts
         run: |
-          ls -alh .
           dpkg-deb --contents pymchelper.deb
+          dpkg-deb --contents pymchelper-convertmc.deb
+          dpkg-deb --contents pymchelper-runmc.deb
 
       - name: Test installation
         run: |
-          docker run -v `pwd`:/pkg ${{ matrix.docker-tag }} /bin/sh -c "ldd --version; dpkg --install /pkg/pymchelper-*.deb; pld2sobp --version"
+          docker run --volume `pwd`:/pkg ${{ matrix.docker-tag }} /bin/sh -c "ldd --version; dpkg --install /pkg/pymchelper-*.deb; convertmc --version; runmc --version"
 
   # test_old_deb:
   #   runs-on: ubuntu-latest
